@@ -1,9 +1,19 @@
 <template>
-  <div>Hola mundo!</div>
+  <LayoutComponent>
+    <template #header>
+      <HeaderComponent />
+    </template>
+  </LayoutComponent>
 </template>
 
 <script>
+import LayoutComponent from "./LayoutComponent";
+import HeaderComponent from "./HeaderComponent";
+
 export default {
-  name: "HomePage",
+  components: {
+    LayoutComponent,
+    HeaderComponent,
+  },
 };
 </script>
