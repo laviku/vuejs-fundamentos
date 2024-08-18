@@ -6,7 +6,10 @@
       <Movement
         v-for="movement in movements"
         :key="movement.id"
+        :id="movement.id"
         :title="movement.title"
+        :description="movement.description"
+        :amount="movement.amount"
       />
     </div>
   </div>
