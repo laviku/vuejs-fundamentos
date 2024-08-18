@@ -32,4 +32,9 @@ export default {
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+* {
+  --brand-green: #04b500;
+  --brand-blue: #0689b0;
+}
 </style>
