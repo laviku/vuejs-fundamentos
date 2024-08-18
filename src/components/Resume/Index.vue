@@ -1,7 +1,7 @@
 <template>
   <main>
     <p>{{ label }}</p>
-    <h1 class="text-xl font-bold">{{ showAmount }}</h1>
+    <h1 class="text-xl font-bold">{{ displayCurrency }}</h1>
 
     <div class="graphic">
       <slot name="graphic"></slot>
@@ -14,6 +14,11 @@
 </template>
 
 <script>
+const currencyFormatter = new Intl.NumberFormat("es-NI", {
+  style: "currency",
+  currency: "NIO",
+});
+
 export default {
   props: {
     label: {
@@ -30,6 +35,9 @@ export default {
   computed: {
     showAmount() {
       return this.amount !== null ? this.amount : this.totalAmount;
+    },
+    displayCurrency() {
+      return currencyFormatter.format(this.showAmount);
     },
   },
 };
