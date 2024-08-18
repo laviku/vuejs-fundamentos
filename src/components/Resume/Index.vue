@@ -2,6 +2,14 @@
   <main>
     <p>{{ label }}</p>
     <h1 class="text-xl font-bold">{{ showAmount }}</h1>
+
+    <div class="graphic">
+      <slot name="graphic"></slot>
+    </div>
+
+    <div class="action">
+      <slot name="action"></slot>
+    </div>
   </main>
 </template>
 

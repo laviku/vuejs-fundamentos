@@ -5,7 +5,10 @@
     </template>
 
     <template #resume>
-      <Resume :label="'Ahorro Total'" :amount="amount" :total-amount="12500" />
+      <Resume :label="'Ahorro Total'" :amount="amount" :total-amount="12500">
+        <template #graphic>graphic</template>
+        <template #action>Action</template>
+      </Resume>
     </template>
 
     <template #movements>
