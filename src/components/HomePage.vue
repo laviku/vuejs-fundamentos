@@ -12,7 +12,7 @@
     </template>
 
     <template #movements>
-      <Movements />
+      <Movements :movements="movements" />
     </template>
   </LayoutComponent>
 </template>
@@ -21,7 +21,7 @@
 import LayoutComponent from "./LayoutComponent";
 import HeaderComponent from "./HeaderComponent";
 import Resume from "./Resume/Index.vue";
-import Movements from "./Resume/Movements.vue";
+import Movements from "./Movements/Index.vue";
 
 export default {
   components: {
@@ -33,6 +33,23 @@ export default {
   data() {
     return {
       amount: null,
+      movements: [
+        {
+          id: 1,
+          title: "Lorem Ipsum 1",
+          description: "Lorem Ipsum dolor sit amet",
+        },
+        {
+          id: 2,
+          title: "Lorem Ipsum 2",
+          description: "Lorem Ipsum dolor sit amet",
+        },
+        {
+          id: 3,
+          title: "Lorem Ipsum 3",
+          description: "Lorem Ipsum dolor sit amet",
+        },
+      ],
     };
   },
 };
