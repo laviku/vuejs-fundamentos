@@ -7,7 +7,7 @@
     <template #resume>
       <Resume :label="'Ahorro Total'" :amount="amount" :total-amount="12500">
         <template #graphic><Graphic :amounts="amounts" /></template>
-        <template #action><Action /></template>
+        <template #action><Action @create="create" /></template>
       </Resume>
     </template>
 
@@ -50,21 +50,21 @@ export default {
           title: "Lorem Ipsum 2",
           description: "Lorem Ipsum dolor sit amet",
           amount: 600,
-          time: new Date("08-18-2024"),
+          time: new Date("08-15-2024"),
         },
         {
           id: 3,
           title: "Lorem Ipsum 3",
           description: "Lorem Ipsum dolor sit amet",
           amount: -400,
-          time: new Date("08-17-2024"),
+          time: new Date("08-16-2024"),
         },
         {
           id: 4,
           title: "Lorem Ipsum 4",
           description: "Lorem Ipsum dolor sit amet",
           amount: 100,
-          time: new Date("08-16-2024"),
+          time: new Date("08-17-2024"),
         },
       ],
     };
@@ -87,6 +87,11 @@ export default {
           return suma + movement;
         }, 0);
       });
+    },
+  },
+  methods: {
+    create(movement) {
+      this.movements.push(movement);
     },
   },
 };
