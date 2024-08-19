@@ -44,7 +44,7 @@ export default {
           id: 2,
           title: "Lorem Ipsum 2",
           description: "Lorem Ipsum dolor sit amet",
-          amount: 22,
+          amount: -6,
         },
         {
           id: 3,

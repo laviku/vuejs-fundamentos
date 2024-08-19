@@ -6,7 +6,9 @@
     </div>
     <div class="action">
       <img src="@/assets/trash-icon.svg" alt="Borrar" @click="remove" />
-      <p>{{ amountCurrency }}</p>
+      <p :class="{ red: isNegative, green: !isNegative }">
+        {{ amountCurrency }}
+      </p>
     </div>
   </div>
 </template>
@@ -37,6 +39,8 @@ const props = defineProps({
 const { id, title, description, amount } = toRefs(props);
 
 const amountCurrency = computed(() => currencyFormatter.format(amount.value));
+
+const isNegative = computed(() => amount.value < 0);
 
 const emit = defineEmits(["remove"]);
 
