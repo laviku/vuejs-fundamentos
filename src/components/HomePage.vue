@@ -37,36 +37,7 @@ export default {
   data() {
     return {
       amount: null,
-      movements: [
-        {
-          id: 1,
-          title: "Lorem Ipsum 1",
-          description: "Lorem Ipsum dolor sit amet",
-          amount: 150,
-          time: new Date("07-18-2024"),
-        },
-        {
-          id: 2,
-          title: "Lorem Ipsum 2",
-          description: "Lorem Ipsum dolor sit amet",
-          amount: 600,
-          time: new Date("08-15-2024"),
-        },
-        {
-          id: 3,
-          title: "Lorem Ipsum 3",
-          description: "Lorem Ipsum dolor sit amet",
-          amount: -400,
-          time: new Date("08-16-2024"),
-        },
-        {
-          id: 4,
-          title: "Lorem Ipsum 4",
-          description: "Lorem Ipsum dolor sit amet",
-          amount: 100,
-          time: new Date("08-17-2024"),
-        },
-      ],
+      movements: [],
     };
   },
   computed: {
@@ -89,13 +60,26 @@ export default {
       });
     },
   },
+  mounted() {
+    const movements = JSON.parse(localStorage.getItem("movements"));
+    if (Array.isArray(movements)) {
+      this.movements = movements.map((m) => {
+        return { ...m, time: new Date(m.time) };
+      });
+    }
+  },
   methods: {
     create(movement) {
       this.movements.push(movement);
+      this.save();
     },
     remove(id) {
       const index = this.movements.findIndex((m) => m.id === id);
       this.movements.splice(index, 1);
+      this.save();
+    },
+    save() {
+      localStorage.setItem("movements", JSON.stringify(this.movements));
     },
   },
 };
