@@ -37,28 +37,57 @@ export default {
   data() {
     return {
       amount: null,
-      amounts: [0, 400, 100, 500, -300, 200, -35, -25, 400],
       movements: [
         {
           id: 1,
           title: "Lorem Ipsum 1",
           description: "Lorem Ipsum dolor sit amet",
-          amount: 15,
+          amount: 150,
+          time: new Date("07-18-2024"),
         },
         {
           id: 2,
           title: "Lorem Ipsum 2",
           description: "Lorem Ipsum dolor sit amet",
-          amount: -6,
+          amount: 600,
+          time: new Date("08-18-2024"),
         },
         {
           id: 3,
           title: "Lorem Ipsum 3",
           description: "Lorem Ipsum dolor sit amet",
-          amount: 7,
+          amount: -400,
+          time: new Date("08-17-2024"),
+        },
+        {
+          id: 4,
+          title: "Lorem Ipsum 4",
+          description: "Lorem Ipsum dolor sit amet",
+          amount: 100,
+          time: new Date("08-16-2024"),
         },
       ],
     };
+  },
+  computed: {
+    amounts() {
+      const lastDaysAmounts = this.movements
+        .filter((m) => {
+          const today = new Date();
+          const oldDate = today.setDate(today.getDate() - 30);
+
+          return m.time >= oldDate;
+        })
+        .map((m) => m.amount);
+
+      return lastDaysAmounts.map((m, i) => {
+        const lastMovements = lastDaysAmounts.slice(0, i);
+
+        return lastMovements.reduce((suma, movement) => {
+          return suma + movement;
+        }, 0);
+      });
+    },
   },
 };
 </script>
