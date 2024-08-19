@@ -1,18 +1,24 @@
 <template>
   <div class="movement">
     <div class="content">
-      <h4>{{ title }} {{ id }}</h4>
+      <h4 class="font-semibold">{{ title }}</h4>
       <p>{{ description }}</p>
     </div>
     <div class="action">
-      <img src="@/assets/trash-icon.svg" alt="Borrar" />
-      <p>{{ amount }}</p>
+      <img src="@/assets/trash-icon.svg" alt="Borrar" @click="remove" />
+      <p>{{ amountCurrency }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps, toRefs } from "vue";
+import { defineProps, toRefs, computed } from "vue";
+
+const currencyFormatter = new Intl.NumberFormat("es-MX", {
+  style: "currency",
+  currency: "MXN",
+});
+
 const props = defineProps({
   id: {
     type: Number,
@@ -29,6 +35,12 @@ const props = defineProps({
 });
 
 const { id, title, description, amount } = toRefs(props);
+
+const amountCurrency = computed(() => currencyFormatter.format(amount.value));
+
+const remove = () => {
+  console.log(id.value);
+};
 </script>
 
 <style scoped>
