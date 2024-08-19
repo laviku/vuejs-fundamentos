@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { defineProps, toRefs, computed } from "vue";
+import { defineProps, toRefs, computed, defineEmits } from "vue";
 
 const currencyFormatter = new Intl.NumberFormat("es-MX", {
   style: "currency",
@@ -38,9 +38,15 @@ const { id, title, description, amount } = toRefs(props);
 
 const amountCurrency = computed(() => currencyFormatter.format(amount.value));
 
+const emit = defineEmits(["remove"]);
+
 const remove = () => {
-  console.log(id.value);
+  emit("remove", id.value);
 };
+
+// const remove = () => {
+//   console.log(id.value);
+// };
 </script>
 
 <style scoped>

@@ -10,6 +10,7 @@
         :title="movement.title"
         :description="movement.description"
         :amount="movement.amount"
+        @remove="remove"
       />
     </div>
   </div>
@@ -27,6 +28,10 @@ const props = defineProps({
 });
 
 const { movements } = toRefs(props);
+
+const remove = (id) => {
+  console.log("remove", id);
+};
 </script>
 
 <style scoped>
