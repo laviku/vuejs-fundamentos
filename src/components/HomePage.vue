@@ -38,16 +38,19 @@ export default {
           id: 1,
           title: "Lorem Ipsum 1",
           description: "Lorem Ipsum dolor sit amet",
+          amount: 15,
         },
         {
           id: 2,
           title: "Lorem Ipsum 2",
           description: "Lorem Ipsum dolor sit amet",
+          amount: 22,
         },
         {
           id: 3,
           title: "Lorem Ipsum 3",
           description: "Lorem Ipsum dolor sit amet",
+          amount: 7,
         },
       ],
     };
